@@ -2,6 +2,7 @@
 import tkinter as tk
 
 
+
 class Todo(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -25,11 +26,11 @@ class Todo(tk.Tk):
         self.things.grid(column=0, row=0)
 
     def add(self):
-        self.add_item = tk.Button(text="Add", width=15, height=11)
+        self.add_item = tk.Button(text="Add", width=15, height=11, bg="#7587cb")
         self.add_item.grid(column=1, row=0, sticky="N")
 
     def delete(self):
-        self.delete_item = tk.Button(text= "Delete", width=15, height=11)
+        self.delete_item = tk.Button(text= "Delete", width=15, height=11, bg="#7587cb")
         self.delete_item.grid(column=1, row=0, sticky="S")
     
 
