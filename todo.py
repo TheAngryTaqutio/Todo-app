@@ -17,10 +17,10 @@ def new_todo():
 
     new_task_lbl = tk.Label(new_window, text="New Task:")
     new_task_lbl.grid(column=0, row=0)
-    
-    new_task = tk.Entry(new_window )
-    new_task.grid(column= 1,row=0,sticky="W")
-    
+
+    new_task = tk.Entry(new_window)
+    new_task.grid(column=1, row=0, sticky="W")
+
     desc = tk.Label(new_window, text="Description")
     desc.grid(column=0, row=1)
 
@@ -32,21 +32,10 @@ def new_todo():
 
     date_entry = tk.Entry(new_window)
     date_entry.grid(column=1, row=2, stick="W")
-    
+
     add_entry = tk.Button(new_window, text="Add")
-    add_entry.grid(column=1, row= 3)
+    add_entry.grid(column=1, row=3)
 
-
-
-    
-
-
-
-
-
-
-
-    
     new_window.mainloop()
 
 
@@ -86,4 +75,3 @@ class Todo(tk.Tk):
         self.delete_item = tk.Button(
             text="Delete", width=15, height=11, bg="#7587cb")
         self.delete_item.grid(column=1, row=0, sticky="S")
-
