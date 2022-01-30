@@ -10,35 +10,42 @@ with open("todo_list.csv", "r") as file:
         d[key] = val
 
 
-class Newtodo(tk.Tk):
+class Newtodo():
     
     def __init__(self):
-        super().__init__()
-        self.new_window.title("New Task")
-        self.new_window.geometry("400x100")
+
+        
+        
+        
+        
+
+        nt = tk.Tk()
+        nt.title("New Task")
+        nt.geometry("400x100")
+        
     
-        new_task_lbl = tk.Label(text="New Task:")
+        new_task_lbl = tk.Label(nt,text="New Task:")
         new_task_lbl.grid(column=0, row=0)
 
-        new_task = tk.Entry()
+        new_task = tk.Entry(nt)
         new_task.grid(column=1, row=0, sticky="W")
 
-        desc = tk.Label(text="Description")
+        desc = tk.Label(nt,text="Description")
         desc.grid(column=0, row=1)
 
-        desc = tk.Entry(width=40)
+        desc = tk.Entry(nt,width=40)
         desc.grid(column=1, row=1, sticky="E")
 
-        date_lbl = tk.Label(text="Complete by:")
+        date_lbl = tk.Label(nt,text="Complete by:")
         date_lbl.grid(column=0, row=2)
 
-        date_entry = tk.Entry()
+        date_entry = tk.Entry(nt)
         date_entry.grid(column=1, row=2, stick="W")
 
-        add_entry = tk.Button(text="Add")
+        add_entry = tk.Button(nt,text="Add")
         add_entry.grid(column=1, row=3)
 
-        self.new_window.mainloop()
+        nt.mainloop()
 
 
 class Todo(tk.Tk):
@@ -56,7 +63,7 @@ class Todo(tk.Tk):
         self.delete()
 
     def things_todo(self, dict=d):
-        things = tk.Listbox(width=60,
+        self.things = tk.Listbox(width=60,
                                  height=18,
                                  bg="#afb9e1",
                                  font=8,
