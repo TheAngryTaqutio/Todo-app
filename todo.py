@@ -10,6 +10,14 @@ with open("todo_list.csv", "r") as file:
         (key, val) = line.split(",")
         d[key] = val
 
+#Save files to csv
+#Add labels to main tkinter window that gives description of task
+#Add option to delete task in list box and csv
+
+
+
+
+
 class Newtodo():
     
     def __init__(self):
@@ -55,7 +63,7 @@ class Newtodo():
         date = self.date_entry.get()
 
 
-        print(n,des,date)
+        
 
         
 
