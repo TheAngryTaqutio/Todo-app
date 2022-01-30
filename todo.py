@@ -1,4 +1,5 @@
 
+from ast import Add
 import tkinter as tk
 
 with open("todo_list.csv", "r") as file:
@@ -9,15 +10,9 @@ with open("todo_list.csv", "r") as file:
         (key, val) = line.split(",")
         d[key] = val
 
-
 class Newtodo():
     
     def __init__(self):
-
-        
-        
-        
-        
 
         nt = tk.Tk()
         nt.title("New Task")
@@ -27,26 +22,42 @@ class Newtodo():
         new_task_lbl = tk.Label(nt,text="New Task:")
         new_task_lbl.grid(column=0, row=0)
 
-        new_task = tk.Entry(nt)
-        new_task.grid(column=1, row=0, sticky="W")
+        self.new_task = tk.Entry(nt)
+        self.new_task.grid(column=1, row=0, sticky="W")
 
         desc = tk.Label(nt,text="Description")
         desc.grid(column=0, row=1)
 
-        desc = tk.Entry(nt,width=40)
-        desc.grid(column=1, row=1, sticky="E")
+        self.desc = tk.Entry(nt,width=40)
+        self.desc.grid(column=1, row=1, sticky="E")
 
         date_lbl = tk.Label(nt,text="Complete by:")
         date_lbl.grid(column=0, row=2)
 
-        date_entry = tk.Entry(nt)
-        date_entry.grid(column=1, row=2, stick="W")
+        self.date_entry = tk.Entry(nt)
+        self.date_entry.grid(column=1, row=2, stick="W")
+        
+        #Gets values from entry boxes
+        
 
-        add_entry = tk.Button(nt,text="Add")
+        add_entry = tk.Button(nt,text="Add",command =self.add_to_csv)
         add_entry.grid(column=1, row=3)
+        
 
+        
+        
+        
         nt.mainloop()
 
+    def add_to_csv(self):
+        n = self.new_task.get()
+        des= self.desc.get()
+        date = self.date_entry.get()
+
+
+        print(n,des,date)
+
+        
 
 class Todo(tk.Tk):
     def __init__(self):
@@ -77,6 +88,8 @@ class Todo(tk.Tk):
 
     def new_todo(self):
         window = Newtodo()
+
+
 
     def add(self):
         add_item = tk.Button(
