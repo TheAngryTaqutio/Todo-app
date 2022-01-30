@@ -1,6 +1,6 @@
 
-from ast import Add
 import tkinter as tk
+from tkinter import messagebox
 
 with open("todo_list.csv", "r") as file:
     d = dict()
@@ -13,6 +13,8 @@ with open("todo_list.csv", "r") as file:
 #Save files to csv
 #Add labels to main tkinter window that gives description of task
 #Add option to delete task in list box and csv
+#refresh listbox after adding a new item
+
 
 
 
@@ -22,49 +24,62 @@ class Newtodo():
     
     def __init__(self):
 
-        nt = tk.Tk()
-        nt.title("New Task")
-        nt.geometry("400x100")
+        self.nt = tk.Tk()
+        self.nt.title("New Task")
+        self.nt.geometry("400x100")
         
     
-        new_task_lbl = tk.Label(nt,text="New Task:")
+        new_task_lbl = tk.Label(self.nt,text="New Task:")
         new_task_lbl.grid(column=0, row=0)
 
-        self.new_task = tk.Entry(nt)
+        self.new_task = tk.Entry(self.nt)
         self.new_task.grid(column=1, row=0, sticky="W")
 
-        desc = tk.Label(nt,text="Description")
+        desc = tk.Label(self.nt,text="Description")
         desc.grid(column=0, row=1)
 
-        self.desc = tk.Entry(nt,width=40)
+        self.desc = tk.Entry(self.nt,width=40)
         self.desc.grid(column=1, row=1, sticky="E")
 
-        date_lbl = tk.Label(nt,text="Complete by:")
-        date_lbl.grid(column=0, row=2)
+        #date_lbl = tk.Label(self.nt,text="Complete by:")
+        #date_lbl.grid(column=0, row=2)
 
-        self.date_entry = tk.Entry(nt)
-        self.date_entry.grid(column=1, row=2, stick="W")
+        #self.date_entry = tk.Entry(self.nt)
+        #self.date_entry.grid(column=1, row=2, stick="W")
         
         #Gets values from entry boxes
         
 
-        add_entry = tk.Button(nt,text="Add",command =self.add_to_csv)
+        add_entry = tk.Button(self.nt,text="Add",command =self.add_to_csv)
         add_entry.grid(column=1, row=3)
         
 
         
         
         
-        nt.mainloop()
+        self.nt.mainloop()
 
     def add_to_csv(self):
         n = self.new_task.get()
         des= self.desc.get()
-        date = self.date_entry.get()
+        #date = self.date_entry.get()
+        
+        is_ok = messagebox.askokcancel(title="Enter Task", message=
+                                    f"Task: {n} \n"
+                                    f"Description: {des} \n"
+                                    )
+        if is_ok:
+            with open("todo_list.csv", "a") as file:
+                file.write(f"{n},{des}\n")
+            
+            self.destroy()
+
+    def destroy(self):
+        self.nt.destroy()
 
 
         
-
+                
         
 
 class Todo(tk.Tk):
