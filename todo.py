@@ -1,14 +1,8 @@
 
+from this import d
 import tkinter as tk
 from tkinter import messagebox
 
-with open("todo_list.csv", "r") as file:
-    d = dict()
-
-    for line in file:
-        line = line.strip('\n')
-        (key, val) = line.split(",")
-        d[key] = val
 
 #Save files to csv
 #Add labels to main tkinter window that gives description of task
@@ -40,6 +34,8 @@ class Newtodo():
 
         self.desc = tk.Entry(self.nt,width=40)
         self.desc.grid(column=1, row=1, sticky="E")
+        
+
 
         #date_lbl = tk.Label(self.nt,text="Complete by:")
         #date_lbl.grid(column=0, row=2)
@@ -71,7 +67,7 @@ class Newtodo():
         if is_ok:
             with open("todo_list.csv", "a") as file:
                 file.write(f"{n},{des}\n")
-            
+
             self.destroy()
 
     def destroy(self):
@@ -87,7 +83,28 @@ class Todo(tk.Tk):
 
         super().__init__()
         self.window()
+        
 
+    def create_list(self):
+        try:
+            with open("todo_list.csv", "r") as file:
+                d = dict()
+
+                for line in file:
+                    line = line.strip('\n')
+                    (key, val) = line.split(",")
+                    d[key] = val
+        except:
+            with open("todo_list.csv", "r") as file:
+                d = dict()
+
+                for line in file:
+                    line = line.strip('\n')
+                    (key, val) = line.split(",")
+                    d[key] = val
+
+
+        
     def window(self):
         self.geometry("700x425")
         self.config(bg="#35478C")
@@ -96,7 +113,7 @@ class Todo(tk.Tk):
         self.add()
         self.delete()
 
-    def things_todo(self, dict=d):
+    def things_todo(self,list=d):
         self.things = tk.Listbox(width=60,
                                  height=18,
                                  bg="#afb9e1",
