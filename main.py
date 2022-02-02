@@ -1,6 +1,14 @@
-from todo import Todo
+from todo2 import Todos
+import tkinter as tk
 
-root = Todo()
-things = root.things_todo(Todo.create_list())
+
+root = tk.Tk()
+app = Todos(root)
+list = Todos.create_list(app)
+
+
+
+
+
 root.mainloop()
 
