@@ -96,8 +96,7 @@ class Todos:
         self.d[n] = des
 
         is_ok = messagebox.askokcancel(title="Enter Task", message=f"Task: {n} \n"
-                                       f"Description: {des} \n"
-                                       )
+                                       f"Description: {des} \n")
         if is_ok:
             with open("todo_list.csv", "a") as file:
                 file.write(f"{n},{des}\n")
@@ -107,7 +106,6 @@ class Todos:
             self.new.destroy()
 
     def delete(self):
-        df = pd.read_csv("todo_list.csv")
 
         delete_todo = messagebox.askokcancel(title="Delete Todo task",
                                              message=f"Delete {self.things.get(self.things.curselection())}")
