@@ -1,4 +1,4 @@
-from todo2 import Todos
+from todo import Todos
 import tkinter as tk
 
 
